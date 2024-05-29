@@ -1,8 +1,9 @@
 from flask import request, jsonify
 from config import app, db
-from model import User, Plan
+from models import User, Plan
 
 
+#users
 @app.route("/users", methods=["GET"])
 def get_users():
     users = User.query.all()
@@ -66,6 +67,7 @@ def delete_user(user_id):
     return jsonify({"message": "User deleted successfully!"}, 200)
 
 
+#plans
 @app.route("/plans", methods=["GET"])
 def get_plans():
     plans = Plan.query.all()

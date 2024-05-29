@@ -10,20 +10,14 @@ class User(db.Model):
     id = db.Column(db.Integer, primary_key=True)
     fullname = db.Column(db.String(80), unique=False, nullable=False)
     contact_number = db.Column(db.String(11), unique=False, nullable=False)
-    user_type = db.Column(db.Enum(UserType), nullable=False)
-
-    # Foreign key column referencing the Plan model
-    plan_id = db.Column(db.Integer, db.ForeignKey('plan.id'), nullable=True)
-    
-    # Define the relationship with the Plan model
-    plan = db.relationship('Plan', backref=db.backref('users', lazy=True))
+    # user_type = db.Column(db.Enum(UserType), nullable=False)
 
     def to_json(self):
         return {
             "id": self.id,
             "fullName": self.fullname,
             "contactNumber": self.contact_number,
-            "userType": self.user_type.value,
+            # "userType": self.user_type.value,
         }
     
 class Plan(db.Model):
