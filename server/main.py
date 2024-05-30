@@ -1,6 +1,6 @@
 from flask import request, jsonify
 from config import app, db
-from models import User, Plan
+from models import User
 
 
 #users
@@ -66,13 +66,6 @@ def delete_user(user_id):
 
     return jsonify({"message": "User deleted successfully!"}, 200)
 
-
-#plans
-@app.route("/plans", methods=["GET"])
-def get_plans():
-    plans = Plan.query.all()
-    json_plans = list(map(lambda x: x.to_json(), plans))
-    return jsonify({"plans": json_plans})
 
 if __name__ == "__main__":
     with app.app_context():

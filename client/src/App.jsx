@@ -15,16 +15,32 @@ function App() {
     console.log(data.users) 
   }
 
-  return (
-    <div className="App">
-      <h1>Users</h1>
-      <ul>
-        {users.map(user => (
-          <li key={user.id}>{user.name}</li>
-        ))}
-      </ul>
-    </div>
-  )
+  return <div>
+  <h2>Forrest users</h2>
+  <table>
+      <thead>
+          <tr>
+              <th>Fullname</th>
+              <th>Contact number</th>
+              <th>User type</th>
+              <th>Actions</th>
+          </tr>
+      </thead>
+      <tbody>
+          {users.map((user) => (
+              <tr key={user.id}>
+                  <td>{user.fullName}</td>
+                  <td>{user.contactNumber}</td>
+                  <td>{user.userType}</td>
+                  <td>
+                      <button>Update</button>
+                      <button>Delete</button>
+                  </td>
+              </tr>
+          ))}
+      </tbody>
+  </table>
+</div>
 }
 
 export default App
